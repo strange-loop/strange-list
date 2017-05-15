@@ -13,6 +13,7 @@ export default class Root extends React.Component<any, any> {
 		store.onChanged.add(() => {
 			this.forceUpdate()
 		})
+		kora.query_path([])
 	}
 	render() {
 		return (

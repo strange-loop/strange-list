@@ -11,14 +11,13 @@ export default class HomePage extends React.Component<any, any> {
 		super()
 	}
 	render() {
-		console.log('Home Page')
 		return (
-			<Container vertical pad-l >
-				<pre>
+			<Container vertical pad-l>
+				<Text s preserve>
 				{
 					JSON.stringify(store.get([]), null, '\t')
 				}
-				</pre>
+				</Text>
 			</Container>
 		)
 	}

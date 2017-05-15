@@ -9,7 +9,7 @@ export default () => {
 	return (
 		<BrowserRouter>
 			<Root>
-				<Route path='/' component={() => <HomePage store={{}} />} />
+				<Route path='/' component={HomePage} />
 			</Root>
 		</BrowserRouter>
 	)
