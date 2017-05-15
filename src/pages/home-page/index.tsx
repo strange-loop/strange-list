@@ -3,21 +3,22 @@ import * as React from 'react'
 
 import Container from '../../components/container'
 import Text from '../../components/text'
+import { kora, store } from '../../kora'
+
 
 export default class HomePage extends React.Component<any, any> {
 	constructor() {
 		super()
 	}
 	render() {
+		console.log('Home Page')
 		return (
-			<Container vertical pad-l className='home-page'>
-				<Text xxs>Text xxs</Text>
-				<Text xs>Text xs</Text>
-				<Text s>Text s</Text>
-				<Text>Text</Text>
-				<Text l>Text l</Text>
-				<Text xl>Text xl</Text>
-				<Text xxl>Text xxl</Text>
+			<Container vertical pad-l >
+				<pre>
+				{
+					JSON.stringify(store.get([]), null, '\t')
+				}
+				</pre>
 			</Container>
 		)
 	}
