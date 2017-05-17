@@ -1,4 +1,4 @@
-import { MemoryStore, Store, Kora } from '@ironbay/kora'
+import { MemoryStore, Store as StoreBase, Kora as KoraBase } from '@ironbay/kora'
 
-export const store = new MemoryStore() as Store
-export const kora = new Kora('ws://localhost:12000/socket', this.store)
+export const Store = new MemoryStore() as StoreBase
+export const Kora = new KoraBase('ws://localhost:12000/socket', Store)

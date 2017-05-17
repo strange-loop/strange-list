@@ -1,7 +1,7 @@
 import './reset.css'
 import './styles.css'
 import * as React from 'react'
-import { kora, store } from '../kora'
+import { Kora, Store } from '../kora'
 
 import Container from '../components/container'
 
@@ -10,10 +10,10 @@ export default class Root extends React.Component<any, any> {
 		super()
 	}
 	componentDidMount() {
-		store.onChanged.add(() => {
+		Store.onChanged.add(() => {
 			this.forceUpdate()
 		})
-		kora.query_path([])
+		Kora.query_path([])
 	}
 	render() {
 		return (

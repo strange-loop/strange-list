@@ -7,6 +7,8 @@ import Tag from '../../components/tag'
 import Modal from '../../components/modal'
 import { editor, Input, InputTags, InputRow, InputBlock, InputLabel, InputArea } from '../../components/form'
 
+import { Kora, Store } from '../../kora'
+
 export default class HomePage extends React.Component<any, any> {
 	constructor() {
 		super()
