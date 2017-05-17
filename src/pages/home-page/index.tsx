@@ -14,6 +14,14 @@ import ItemEditor from '../../structures/item-editor'
 export default class HomePage extends React.Component<any, any> {
 	constructor() {
 		super()
+		this.state = {
+			name: 'Some Item',
+			tags: {
+				hello: 1,
+				bye: 1,
+			},
+			modal: true,
+		}
 	}
 	componentDidMount() {
 		const editor = this.refs.editor as ItemEditor
