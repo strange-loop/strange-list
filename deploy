@@ -1,0 +1,4 @@
+#!/bin/bash
+npm run build
+scp -r build titanic.ironbay.digital:~
+ssh titanic.ironbay.digital -t "sudo cp -vaT build /docker/www/borrow"
