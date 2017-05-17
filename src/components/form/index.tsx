@@ -25,7 +25,7 @@ export const InputLabel = wrap(Text, 'input-text', {
 	'size-3': true,
 	'weight-5': true,
 	'fg-gray': true,
-	'mgn-b': true,
+	'mgn-b2': true,
 }, {})
 
 
