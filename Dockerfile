@@ -9,6 +9,7 @@ WORKDIR /app
 ADD . .
 RUN mv /tmp/node_modules .
 RUN npm run build
+RUN rm -rf node_modules
 
 
 # CMD npm run debug
