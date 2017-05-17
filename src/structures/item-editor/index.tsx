@@ -9,11 +9,15 @@ import { editor, Input, InputTags, InputRow, InputBlock, InputLabel, InputArea }
 import { Kora, Store } from '../../kora'
 import { Item } from '../../types'
 
-interface IProps {
-	item: Item
+interface IState{
+	item: Item,
 }
 
-export default class ItemEditor extends React.Component<any, IProps> {
+interface IProps {
+	onHide?: () => void
+}
+
+export default class ItemEditor extends React.Component<IProps, IState> {
 	private initial: Item
 	constructor() {
 		super()
@@ -31,7 +35,7 @@ export default class ItemEditor extends React.Component<any, IProps> {
 	render() {
 		const { item } = this.state
 		return (
-			<Modal active={item.key !== ''}>
+			<Modal onHide={this.props.onHide} active={item.key !== ''}>
 				<Container pad-8 vertical>
 					<Text size-5 weight-5>Edit Item</Text>
 				</Container>
@@ -69,11 +73,27 @@ export default class ItemEditor extends React.Component<any, IProps> {
 						</InputBlock>
 					</InputRow>
 				</Container>
-				<Container onClick={this.handle_save} cursor bg-blue pad-6 justify-center>
-					<Text fg-white weight-5 >Save</Text>
+				<Container style={{textAlign: 'center'}}>
+					<Text style={{width: '50%'}} bg-gray pad-6 justify-center fg-white weight-5 onClick={this.handle_delete} >Delete</Text>
+					<Text style={{width: '50%'}} bg-blue pad-6 justify-center fg-white weight-5 onClick={this.handle_save} >Save</Text>
 				</Container>
 			</Modal>
 		)
+	}
+	private handle_delete = () => {
+		const { item } = this.state
+		this.edit({
+			key: ''
+		})
+		Kora.mutation({
+			delete: {
+				'list:items': {
+					[item.category]: {
+						[item.key]: 1
+					}
+				}
+			}
+		})
 	}
 	private handle_save = () => {
 		const { item } = this.state

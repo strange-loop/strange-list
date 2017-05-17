@@ -74,7 +74,6 @@ export function editor(name, e) {
 	const component = this as React.Component<any, any>
 	const { value } = e.target
 	component.setState(state => {
-		console.log(state)
 		return {
 			...state,
 			item: {

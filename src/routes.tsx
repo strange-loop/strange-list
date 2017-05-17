@@ -3,13 +3,13 @@ import { Route, BrowserRouter } from 'react-router-dom'
 
 import Root from './root'
 
-import HomePage from './pages/home-page'
+import ListPage from './pages/list-page'
 
 export default () => {
 	return (
 		<BrowserRouter>
 			<Root>
-				<Route path='/' component={HomePage} />
+				<Route path='/:list' component={ListPage} />
 			</Root>
 		</BrowserRouter>
 	)

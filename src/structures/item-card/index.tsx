@@ -1,5 +1,6 @@
 import './styles.css'
 import * as React from 'react'
+import * as moment from 'moment'
 
 import Modal from '../../components/modal'
 import Container from '../../components/container'
@@ -25,7 +26,7 @@ export default class ItemCard extends React.Component<IProps, any> {
 		return (
 			<Container onClick={onClick} vertical pad-8 bg-white border mgn-b8>
 				<Text size-5 weight-5>{item.title}</Text>
-				<Text size-4 fg-gray mgn-t2>added by {item.referrer} five days ago</Text>
+				<Text size-4 fg-gray mgn-t2>added by {item.referrer} {moment(item.created).fromNow()}</Text>
 				{
 					tags.length > 0 &&
 						<Container mgn-t3>
@@ -35,7 +36,7 @@ export default class ItemCard extends React.Component<IProps, any> {
 						</Container>
 				}
 				<Text fg-gray line-8 mgn-t2>
-                {item.description || 'No Description'}
+                	{item.description || 'No Description'}
 				</Text>
 			</Container>
 		)

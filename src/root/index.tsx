@@ -14,7 +14,7 @@ export default class Root extends React.Component<any, any> {
 			console.log(Store.get([]))
 			this.forceUpdate()
 		})
-		Kora.query_path([])
+		Kora.query_path(['list:items', 'example'])
 	}
 	render() {
 		return (
