@@ -21,15 +21,19 @@ export default class ItemCard extends React.Component<IProps, any> {
 	}
 	render() {
 		const { item, onClick } = this.props
+		const tags = Object.keys(item.tags || {})
 		return (
 			<Container onClick={onClick} vertical pad-8 bg-white border mgn-b8>
 				<Text size-5 weight-5>{item.title}</Text>
 				<Text size-4 fg-gray mgn-t2>added by {item.referrer} five days ago</Text>
-				<Container mgn-t3>
 				{
-					Object.keys(item.tags || {}).map(item => <Tag key={item} fg-blue mgn-r3>{item}</Tag>)
+					tags.length > 0 &&
+						<Container mgn-t3>
+						{
+							Object.keys(item.tags || {}).map(item => <Tag key={item} fg-blue mgn-r3>{item}</Tag>)
+						}
+						</Container>
 				}
-				</Container>
 				<Text fg-gray line-8 mgn-t2>
                 {item.description || 'No Description'}
 				</Text>

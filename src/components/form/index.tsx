@@ -71,7 +71,16 @@ export class InputTags extends React.Component<IInputTagProps, any> {
 }
 
 export function editor(name, e) {
-	this.setState({
-		[name]: e.target.value
+	const component = this as React.Component<any, any>
+	const { value } = e.target
+	component.setState(state => {
+		console.log(state)
+		return {
+			...state,
+			item: {
+				...state.item,
+				[name]: value
+			}
+		}
 	})
 }

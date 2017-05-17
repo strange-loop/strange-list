@@ -9,27 +9,29 @@ import { editor, Input, InputTags, InputRow, InputBlock, InputLabel, InputArea }
 import { Kora, Store } from '../../kora'
 import { Item } from '../../types'
 
-export default class ItemEditor extends React.Component<any, Item> {
+interface IProps {
+	item: Item
+}
+
+export default class ItemEditor extends React.Component<any, IProps> {
+	private initial: Item
 	constructor() {
 		super()
 		this.state = {
-			key: '',
-			title: '',
-			referrer: '',
+			item: {
+				key: '',
+			}
 		}
 	}
-	public edit(item) {
-		this.setState(item)
-	}
-    public clear() {
+	public edit(item: Item) {
 		this.setState({
-			key: '',
+			item
 		})
 	}
 	render() {
-		console.log(this.state.key)
+		const { item } = this.state
 		return (
-			<Modal active={this.state.key !== ''}>
+			<Modal active={item.key !== ''}>
 				<Container pad-8 vertical>
 					<Text size-5 weight-5>Edit Item</Text>
 				</Container>
@@ -38,14 +40,14 @@ export default class ItemEditor extends React.Component<any, Item> {
 						<InputBlock border-r>
 							<InputLabel>Title</InputLabel>
 							<Input
-								value={this.state.title}
+								value={item.title || ''}
 								placeholder='Name of item'
 								onChange={editor.bind(this, 'title')}/>
 						</InputBlock>
 						<InputBlock>
 							<InputLabel>Added By</InputLabel>
 							<Input
-								value={this.state.referrer}
+								value={item.referrer || ''}
 								placeholder='Name of referrer'
 								onChange={editor.bind(this, 'referrer')}/>
 						</InputBlock>
@@ -54,6 +56,7 @@ export default class ItemEditor extends React.Component<any, Item> {
 						<InputBlock border-r>
 							<InputLabel>Description</InputLabel>
 							<InputArea
+								value={item.description || ''}
 								rows={5}
 								placeholder='Description of item'
 								onChange={editor.bind(this, 'description')} />
@@ -62,7 +65,7 @@ export default class ItemEditor extends React.Component<any, Item> {
 					<InputRow>
 						<InputBlock>
 							<InputLabel>Tags</InputLabel>
-							<InputTags placeholder='Add tag...' value={this.state.tags || {}} onChange={editor.bind(this, 'tags')} />
+							<InputTags placeholder='Add tag...' value={item.tags || {}} onChange={editor.bind(this, 'tags')} />
 						</InputBlock>
 					</InputRow>
 				</Container>
@@ -73,8 +76,10 @@ export default class ItemEditor extends React.Component<any, Item> {
 		)
 	}
 	private handle_save = () => {
-		const item = this.state
-		this.clear()
+		const { item } = this.state
+		this.edit({
+			key: ''
+		})
 		Kora.mutation({
 			merge: {
 				'list:items': {
