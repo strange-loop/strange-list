@@ -10,7 +10,8 @@ export default class Root extends React.Component<any, any> {
 		super()
 	}
 	componentDidMount() {
-		Store.onChanged.add(() => {
+		Store.onChanged.add(mut => {
+			console.log(Store.get([]))
 			this.forceUpdate()
 		})
 		Kora.query_path([])

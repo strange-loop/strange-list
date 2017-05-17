@@ -7,12 +7,13 @@ import Text from '../../components/text'
 import { editor, Input, InputTags, InputRow, InputBlock, InputLabel, InputArea } from '../../components/form'
 
 import { Kora, Store } from '../../kora'
+import { Item } from '../../types'
 
-export default class ItemEditor extends React.Component<any, any> {
+export default class ItemEditor extends React.Component<any, Item> {
 	constructor() {
 		super()
 		this.state = {
-			key: false,
+			key: '',
 			title: '',
 			referrer: '',
 		}
@@ -22,13 +23,13 @@ export default class ItemEditor extends React.Component<any, any> {
 	}
     public clear() {
 		this.setState({
-			key: false,
+			key: '',
 		})
 	}
 	render() {
 		console.log(this.state.key)
 		return (
-			<Modal active={this.state.key}>
+			<Modal active={this.state.key !== ''}>
 				<Container pad-8 vertical>
 					<Text size-5 weight-5>Edit Item</Text>
 				</Container>
@@ -52,7 +53,10 @@ export default class ItemEditor extends React.Component<any, any> {
 					<InputRow>
 						<InputBlock border-r>
 							<InputLabel>Description</InputLabel>
-							<InputArea rows={5} placeholder='Description of item' />
+							<InputArea
+								rows={5}
+								placeholder='Description of item'
+								onChange={editor.bind(this, 'description')} />
 						</InputBlock>
 					</InputRow>
 					<InputRow>
