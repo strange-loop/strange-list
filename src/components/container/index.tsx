@@ -17,4 +17,5 @@ export default wrap('div', 'container', {}, {
 	size: true,
 	shadow: true,
 	cursor: true,
+	hover: true,
 })

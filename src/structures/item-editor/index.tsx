@@ -74,8 +74,8 @@ export default class ItemEditor extends React.Component<IProps, IState> {
 					</InputRow>
 				</Container>
 				<Container style={{textAlign: 'center'}}>
-					<Text style={{width: '50%'}} bg-gray pad-6 justify-center fg-white weight-5 onClick={this.handle_delete} >Delete</Text>
-					<Text style={{width: '50%'}} bg-blue pad-6 justify-center fg-white weight-5 onClick={this.handle_save} >Save</Text>
+					<Text style={{width: '50%'}} hover bg-gray pad-6 justify-center fg-white weight-5 onClick={this.handle_delete} >Delete</Text>
+					<Text style={{width: '50%'}} hover bg-blue pad-6 justify-center fg-white weight-5 onClick={this.handle_save} >Save</Text>
 				</Container>
 			</Modal>
 		)

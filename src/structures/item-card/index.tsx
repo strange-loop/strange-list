@@ -24,7 +24,7 @@ export default class ItemCard extends React.Component<IProps, any> {
 		const { item, onClick } = this.props
 		const tags = Object.keys(item.tags || {})
 		return (
-			<Container onClick={onClick} vertical pad-8 bg-white border mgn-b8>
+			<Container onClick={onClick} hover vertical pad-8 bg-white border mgn-b8>
 				<Text size-5 weight-5>{item.title}</Text>
 				<Text size-4 fg-gray mgn-t2>added by {item.referrer} {moment(item.created).fromNow()}</Text>
 				{
